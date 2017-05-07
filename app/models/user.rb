@@ -9,6 +9,8 @@ class User < ApplicationRecord
          otp_secret_encryption_key: ENV['OTP_SECRET'],
          otp_number_of_backup_codes: 10
 
+  devise :omniauthable, omniauth_providers: [:facebook]
+
   belongs_to :account, inverse_of: :user, required: true
   accepts_nested_attributes_for :account
 
@@ -37,5 +39,38 @@ class User < ApplicationRecord
 
   def setting_auto_play_gif
     settings.auto_play_gif
+  end
+
+  def self.from_omniauth(auth)
+    user = where(provider: auth.provider, uid: auth.uid).first
+    return user if user
+
+    password = Devise.friendly_token[0, 20]
+    user = User.new \
+      email: auth.info.email,
+      provider: auth.provider,
+      uid: auth.uid,
+      password: password,
+      password_confirmation: password
+    user.build_account if user.account.blank?
+    user.account.username = auth.extra.raw_info.username
+
+    # TODO: 登録時ユーザーが指定できるようにする
+    if user.account.username.blank?
+      username = user.email.split('@').first
+      user.account.username = username.gsub(/[^a-z0-9_]/, '')
+    end
+    user.account.display_name = auth.info.name
+    user.skip_confirmation!
+    user.save!
+    user
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session['devise.facebook_data'] && data['info']['email']
+        user.email = data['info']['email']
+      end
+    end
   end
 end
