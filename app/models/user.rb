@@ -12,6 +12,7 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: [:facebook]
 
   belongs_to :account, inverse_of: :user, required: true
+  has_one :credential
   accepts_nested_attributes_for :account
 
   validates :locale, inclusion: I18n.available_locales.map(&:to_s), unless: 'locale.nil?'
@@ -42,25 +43,35 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    user = where(provider: auth.provider, uid: auth.uid).first
+    user = joins(:credential).where(credentials: { provider: auth.provider, uid: auth.uid }).first
     return user if user
 
     password = Devise.friendly_token[0, 20]
     user = User.new \
       email: auth.info.email,
-      provider: auth.provider,
-      uid: auth.uid,
       password: password,
       password_confirmation: password
-    user.build_account if user.account.blank?
-    user.account.username = auth.extra.raw_info.username
 
-    # TODO: 登録時ユーザーが指定できるようにする
-    if user.account.username.blank?
-      username = user.email.split('@').first
-      user.account.username = username.gsub(/[^a-z0-9_]/, '')
+    if user.credential.blank?
+      user.build_credential \
+        provider: auth.provider,
+        uid: auth.uid,
+        token: auth.credentials.token,
+        expires_at: Time.at(auth.credentials.expires_at)
     end
-    user.account.display_name = auth.info.name
+
+    if user.account.blank?
+      user.build_account
+      user.account.username = auth.extra.raw_info.username
+
+      # TODO: 登録時ユーザーが指定できるようにする
+      if user.account.username.blank?
+        username = user.email.split('@').first
+        user.account.username = username.gsub(/[^a-z0-9_]/, '')
+      end
+      user.account.display_name = auth.info.name
+    end
+
     user.skip_confirmation!
     user.save!
     user
