@@ -40,6 +40,10 @@
           ·
           = link_to t('about.about_this'), about_more_path
 
+  %h3= "Facebook Login"
+  .facebook-login
+    = link_to button_tag('Log in with Facebook'), user_facebook_omniauth_authorize_path
+
   %h3= t('about.features_headline')
 
   .features-list
