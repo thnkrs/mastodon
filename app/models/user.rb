@@ -44,7 +44,15 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     user = joins(:credential).where(credentials: { provider: auth.provider, uid: auth.uid }).first
-    return user if user
+    if user
+      user.credential.update \
+        provider: auth.provider,
+        uid: auth.uid,
+        token: auth.credentials.token,
+        expires_at: Time.at(auth.credentials.expires_at)
+
+      return user
+    end
 
     password = Devise.friendly_token[0, 20]
     user = User.new \
