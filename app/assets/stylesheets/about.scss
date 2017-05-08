@@ -2,7 +2,6 @@
   .wrapper {
     max-width: 600px;
     margin: 0 auto;
-    color: $color3;
     padding-top: 50px;
     padding-bottom: 50px;
 
@@ -15,7 +14,7 @@
     font: 46px/52px 'Roboto', sans-serif;
     font-weight: 600;
     margin-bottom: 20px;
-    color: $color4;
+    color: $thinkers-color;
     padding: 20px 0;
 
     img {
@@ -32,7 +31,6 @@
     line-height: 28px;
     font-weight: 400;
     margin-bottom: 20px;
-    color: $color5;
   }
 
   h3 {
@@ -41,7 +39,6 @@
     line-height: 28px;
     font-weight: 400;
     margin-bottom: 20px;
-    color: $color2;
   }
 
   ul, ol {
@@ -349,7 +346,7 @@
       text-align: center;
 
       a {
-        color: $color2;
+        color: $my-black6;
       }
     }
   }
