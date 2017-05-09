@@ -9,13 +9,11 @@
     padding: 8px;
     line-height: 18px;
     vertical-align: top;
-    border-top: 1px solid $color1;
     text-align: left;
   }
 
   & > thead > tr > th {
     vertical-align: bottom;
-    border-bottom: 2px solid $color1;
     border-top: 0;
     font-weight: 500;
   }
@@ -25,11 +23,12 @@
   }
 
   & > tbody > tr:nth-child(odd) > td, & > tbody > tr:nth-child(odd) > th {
-    background: $color1;
+    background: $thinkers-color;
+    color: $my-black6;
   }
 
   a {
-    color: $color4;
+    color: $my-black6;
     text-decoration: underline;
 
     &:hover {
@@ -51,12 +50,8 @@ a.table-action-link {
   display: inline-block;
   margin-right: 5px;
   padding: 0 10px;
-  color: rgba($color5, 0.7);
+  color: $my-black6;
   font-weight: 500;
-
-  &:hover {
-    color: $color5;
-  }
 
   i.fa {
     font-weight: 400;
