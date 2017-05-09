@@ -571,7 +571,7 @@ a.status__content__spoiler-link {
 }
 
 .detailed-status {
-  background: lighten($color1, 4%);
+  background: $my-black6;
   padding: 14px 10px;
 
   .status__content {
@@ -593,11 +593,9 @@ a.status__content__spoiler-link {
 }
 
 .detailed-status__action-bar {
-  background: lighten($color1, 4%);
+  background: $my-black6;
   display: flex;
   flex-direction: row;
-  border-top: 1px solid lighten($color1, 8%);
-  border-bottom: 1px solid lighten($color1, 8%);
   padding: 10px 0;
 }
 
@@ -924,6 +922,11 @@ a.status__content__spoiler-link {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  .display-name__html {
+    color: $my-black1 !important;
+    text-decoration: none !important;
+  }
 }
 
 .display-name__html {
