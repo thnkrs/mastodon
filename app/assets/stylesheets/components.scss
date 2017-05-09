@@ -17,13 +17,12 @@
   font-size: 14px;
   font-weight: 500;
   height: 36px;
-  letter-spacing: 0;
+  letter-spacing: 0.1em;
   line-height: 36px;
   overflow: hidden;
   padding: 0 16px;
   position: relative;
   text-align: center;
-  text-transform: uppercase;
   text-decoration: none;
   text-overflow: ellipsis;
   transition: all 100ms ease-in;
@@ -1270,7 +1269,7 @@ a.status__content__spoiler-link {
 
 .tabs-bar {
   display: flex;
-  background: lighten($color1, 8%);
+  background: $thinkers-color;
   flex: 0 0 auto;
   overflow-y: auto;
 }
@@ -1279,12 +1278,11 @@ a.status__content__spoiler-link {
   display: block;
   flex: 1 1 auto;
   padding: 15px 10px;
-  color: $color5;
+  color: $my-black6;
   text-decoration: none;
   text-align: center;
   font-size: 14px;
   font-weight: 500;
-  border-bottom: 2px solid lighten($color1, 8%);
   transition: all 200ms linear;
 
   .fa {
@@ -1295,11 +1293,6 @@ a.status__content__spoiler-link {
   &.active {
     border-bottom: 2px solid $color4;
     color: $color4;
-  }
-
-  &:hover, &:focus, &:active {
-    background: lighten($color1, 14%);
-    transition: all 100ms linear;
   }
 
   span {
@@ -1518,10 +1511,6 @@ a.status__content__spoiler-link {
   font-size: 16px;
   padding: 15px;
   text-decoration: none;
-
-  &:hover {
-    background: lighten($color1, 11%);
-  }
 
   &.hidden-on-mobile {
     @media screen and (max-width: 1024px) {
@@ -1756,10 +1745,6 @@ button.icon-button.active i.fa-retweet {
   text-align: center;
   padding: 15px;
   text-decoration: none;
-
-  &:hover {
-    background: lighten($color1, 2%);
-  }
 }
 
 .missing-indicator {
