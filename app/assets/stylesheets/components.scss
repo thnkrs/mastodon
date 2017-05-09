@@ -594,6 +594,7 @@ a.status__content__spoiler-link {
 
 .detailed-status__action-bar {
   background: $my-black6;
+  border-bottom: 1px solid $my-black4;
   display: flex;
   flex-direction: row;
   padding: 10px 0;
@@ -1237,7 +1238,7 @@ a.status__content__spoiler-link {
   height: 100%;
 
   &.darker {
-    background: $color1;
+    // background: $color1;
   }
 }
 
@@ -2481,9 +2482,8 @@ button.icon-button.active i.fa-retweet {
 }
 
 .search-results__header {
-  color: lighten($color1, 26%);
-  background: lighten($color1, 2%);
-  border-bottom: 1px solid darken($color1, 4%);
+  color: $my-black6;
+  background: $thinkers-color;
   padding: 15px 10px;
   font-size: 14px;
   font-weight: 500;

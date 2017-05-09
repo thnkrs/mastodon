@@ -198,12 +198,12 @@ code {
 }
 
 .flash-message {
-  background: $color1;
-  color: $color3;
+  background: $thinkers-color;
+  color: $my-black6;
   border-radius: 4px;
   padding: 15px 10px;
   margin-bottom: 30px;
-  box-shadow: 0 0 5px rgba($color8, 0.2);
+  box-shadow: 0 0 5px rgba($thinkers-color, 0.2);
   text-align: center;
 
   strong {
