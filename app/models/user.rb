@@ -68,6 +68,9 @@ class User < ApplicationRecord
         expires_at: Time.at(auth.credentials.expires_at)
     end
 
+    birthday = Koala::Facebook::API.new(user.credential.token).get_object('me', fields: 'birthday')['birthday']
+    user.birthday = Date.strptime(birthday, '%M/%d/%Y')
+
     if user.account.blank?
       user.build_account
       user.account.username = auth.extra.raw_info.username
