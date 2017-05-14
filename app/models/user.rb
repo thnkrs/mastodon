@@ -18,9 +18,25 @@ class User < ApplicationRecord
   validates :locale, inclusion: I18n.available_locales.map(&:to_s), unless: 'locale.nil?'
   validates :email, email: true
 
+  validate :must_be_teenager, if: -> { birthday.present? }
+
   scope :recent,    -> { order('id desc') }
   scope :admins,    -> { where(admin: true) }
   scope :confirmed, -> { where.not(confirmed_at: nil) }
+
+  def must_be_teenager
+    return true if age >= 10 && age < 20
+
+    errors.add(:age, 'Must be over 10 and under 20 years old')
+  end
+
+  def age
+    raise "Birthday is not given to the user: #{account.username}" if birthday.blank?
+
+    now = Date.today
+    now.year - birthday.year -
+      ((birthday.month > now.month || (birthday.month == now.month && birthday.day > now.day)) ? 0 : 1)
+  end
 
   def confirmed?
     confirmed_at.present?
