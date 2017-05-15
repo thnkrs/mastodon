@@ -13,6 +13,6 @@
 = simple_form_for(resource, as: resource_name, url: user_facebook_omniauth_authorize_path) do |f|
 
   .actions
-    = f.button :button, 'Facebook Login', type: :submit
+    = f.button :button, 'Login with Facebook', type: :submit
 
 .form-footer= render "auth/shared/links"

@@ -14,4 +14,10 @@
   .actions
     = f.button :button, t('auth.register'), type: :submit
 
+%hr
+
+= simple_form_for(resource, as: resource_name, url: user_facebook_omniauth_authorize_path) do |f|
+  .actions
+    = f.button :button, 'Sign up with Facebook', type: :submit
+
 .form-footer= render "auth/shared/links"
