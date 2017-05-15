@@ -92,7 +92,9 @@ class User < ApplicationRecord
       user.account.username = auth.extra.raw_info.username
 
       # TODO: 登録時ユーザーが指定できるようにする
-      if user.account.username.blank?
+      if auth.extra.raw_info.username
+        user.account.username = username
+      else
         username = user.email.split('@').first
         user.account.username = username.gsub(/[^a-z0-9_]/, '')
       end
