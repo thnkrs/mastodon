@@ -2,7 +2,6 @@
   .wrapper {
     max-width: 600px;
     margin: 0 auto;
-    color: $color3;
     padding-top: 50px;
     padding-bottom: 50px;
 
@@ -15,7 +14,7 @@
     font: 46px/52px 'Roboto', sans-serif;
     font-weight: 600;
     margin-bottom: 20px;
-    color: $color4;
+    color: $thinkers-color;
     padding: 20px 0;
 
     img {
@@ -32,7 +31,6 @@
     line-height: 28px;
     font-weight: 400;
     margin-bottom: 20px;
-    color: $color5;
   }
 
   h3 {
@@ -41,7 +39,6 @@
     line-height: 28px;
     font-weight: 400;
     margin-bottom: 20px;
-    color: $color2;
   }
 
   ul, ol {
@@ -139,10 +136,11 @@
     }
 
     span {
+      color: $my-black1;
       font-size: 16px;
 
       &:last-child {
-        color: $color2;
+        color: $my-black2;
         font-size: 14px;
       }
     }
@@ -151,7 +149,7 @@
       font-weight: 500;
       font-size: 32px;
       line-height: 48px;
-      color: $color5;
+      color: $my-black1;
     }
   }
 
@@ -234,7 +232,8 @@
 
   .panel {
     .panel-header {
-      background: lighten($color1, 10%);
+      background: $thinkers-color;
+      color: $my-black6;
       padding: 7px 14px;
       text-transform: uppercase;
       font-size: 12px;
@@ -259,27 +258,12 @@
           a {
             display: block;
             padding: 7px 14px;
-            color: rgba($color5, 0.7);
             text-decoration: none;
             transition: all 200ms linear;
+            color: $thinkers-color;
 
             i.fa {
               margin-right: 5px;
-            }
-
-            &:hover {
-              color: $color5;
-              background-color: darken($color1, 5%);
-              transition: all 100ms linear;
-            }
-
-            &.selected {
-              color: $color5;
-              background-color: $color4;
-
-              &:hover {
-                background-color: lighten($color4, 5%);
-              }
             }
           }
         }
@@ -349,7 +333,7 @@
       text-align: center;
 
       a {
-        color: $color2;
+        color: $my-black6;
       }
     }
   }
