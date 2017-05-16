@@ -4,6 +4,8 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  health_check_routes
+
   mount LetterOpenerWeb::Engine, at: 'letter_opener' if Rails.env.development?
 
   authenticate :user, lambda { |u| u.admin? } do
