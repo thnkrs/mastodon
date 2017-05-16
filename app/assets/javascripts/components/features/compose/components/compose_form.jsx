@@ -120,15 +120,9 @@ class ComposeForm extends React.PureComponent {
     const { intl, onPaste } = this.props;
     const disabled = this.props.is_submitting;
     const text = [this.props.spoiler_text, this.props.text].join('');
+    const publishText = 'Think!';
 
-    let publishText    = '';
     let reply_to_other = false;
-
-    if (this.props.privacy === 'private' || this.props.privacy === 'direct') {
-      publishText = <span className='compose-form__publish-private'><i className='fa fa-lock' /> {intl.formatMessage(messages.publish)}</span>;
-    } else {
-      publishText = intl.formatMessage(messages.publish) + (this.props.privacy !== 'unlisted' ? '!' : '');
-    }
 
     return (
       <div className='compose-form'>

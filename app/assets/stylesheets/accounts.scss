@@ -1,5 +1,5 @@
 .card {
-  background: $color1;
+  background: $thinkers-color;
   background-size: cover;
   padding: 60px 0;
   padding-bottom: 0;
@@ -13,28 +13,15 @@
     box-shadow: none;
   }
 
-  &:after {
-    background: linear-gradient(rgba($color8, 0.5), rgba($color8, 0.8));
-    display: block;
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-  }
-
   .name {
     display: block;
     font-size: 20px;
     line-height: 18px * 1.5;
-    color: $color5;
+    color: $my-black6;
     font-weight: 500;
     text-align: center;
     position: relative;
     z-index: 2;
-    text-shadow: 0 0 2px $color8;
 
     small {
       display: block;
@@ -82,46 +69,15 @@
 
   .counter {
     width: 80px;
-    color: $color3;
     padding: 5px 10px 0px;
     margin-bottom: 10px;
-    border-right: 1px solid $color3;
+    border-right: 1px solid $my-black6;
     cursor: default;
     position: relative;
 
     a {
       display: block;
-    }
-
-    &:after {
-      display: block;
-      content: "";
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 100%;
-      border-bottom: 4px solid $color3;
-      opacity: 0.5;
-      transition: all 0.8s ease;
-    }
-
-    &.active {
-      &:after {
-        border-bottom: 4px solid $color4;
-        opacity: 1;
-      }
-    }
-
-    &:hover {
-      &:after {
-        opacity: 1;
-        transition-duration: 0.2s;
-      }
-    }
-
-    a {
       text-decoration: none;
-      color: inherit;
     }
 
     .counter-label {
@@ -129,13 +85,13 @@
       text-transform: uppercase;
       display: block;
       margin-bottom: 5px;
-      text-shadow: 0 0 2px $color8;
+      color: $my-black6;
     }
 
     .counter-number {
       font-weight: 500;
       font-size: 18px;
-      color: $color5;
+      color: $my-black6;
     }
   }
 
