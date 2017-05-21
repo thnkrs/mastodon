@@ -338,4 +338,5 @@ en:
     wrong_code: The entered code was invalid! Are server time and device time correct?
   users:
     invalid_email: The e-mail address is invalid
+    invalid_email_domain: The e-mail domain must end with .ac.jp or .edu.
     invalid_otp_token: Invalid two-factor code
