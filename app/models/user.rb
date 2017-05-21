@@ -27,14 +27,14 @@ class User < ApplicationRecord
   def must_be_teenager
     return true if age >= 10 && age < 20
 
-    errors.add(:age, 'Must be over 10 and under 20 years old')
+    errors.add(:base, 'Facebookで登録するには10代である必要があります。')
   end
 
   def age
     raise "Birthday is not given to the user: #{account.username}" if birthday.blank?
 
     now = Date.today
-    now.year - birthday.year -
+    now.year - birthday.year
       ((birthday.month > now.month || (birthday.month == now.month && birthday.day > now.day)) ? 0 : 1)
   end
 
