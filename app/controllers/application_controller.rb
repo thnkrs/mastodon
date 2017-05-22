@@ -20,10 +20,6 @@ class ApplicationController < ActionController::Base
   before_action :set_user_activity
   before_action :check_suspension, if: :user_signed_in?
 
-  if ENV['BASIC_AUTH_NAME'].present?
-    http_basic_authenticate_with name: ENV['BASIC_AUTH_NAME'], password: ENV['BASIC_AUTH_PASSWORD']
-  end
-
   def raise_not_found
     raise ActionController::RoutingError, "No route matches #{params[:unmatched_route]}"
   end
