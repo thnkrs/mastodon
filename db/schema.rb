@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170424112722) do
+ActiveRecord::Schema.define(version: 20170513084147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,17 @@ ActiveRecord::Schema.define(version: 20170424112722) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.index ["account_id", "target_account_id"], name: "index_blocks_on_account_id_and_target_account_id", unique: true, using: :btree
+  end
+
+  create_table "credentials", force: :cascade do |t|
+    t.string   "provider",   null: false
+    t.string   "uid",        null: false
+    t.string   "token",      null: false
+    t.datetime "expires_at", null: false
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_credentials_on_user_id", using: :btree
   end
 
   create_table "domain_blocks", force: :cascade do |t|
@@ -120,6 +131,7 @@ ActiveRecord::Schema.define(version: 20170424112722) do
     t.datetime "updated_at",                     null: false
     t.string   "shortcode"
     t.integer  "type",              default: 0,  null: false
+    t.json     "file_meta"
     t.index ["shortcode"], name: "index_media_attachments_on_shortcode", unique: true, using: :btree
     t.index ["status_id"], name: "index_media_attachments_on_status_id", using: :btree
   end
@@ -202,6 +214,14 @@ ActiveRecord::Schema.define(version: 20170424112722) do
     t.datetime "image_updated_at"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.integer  "type",               default: 0,  null: false
+    t.text     "html",               default: "", null: false
+    t.string   "author_name",        default: "", null: false
+    t.string   "author_url",         default: "", null: false
+    t.string   "provider_name",      default: "", null: false
+    t.string   "provider_url",       default: "", null: false
+    t.integer  "width",              default: 0,  null: false
+    t.integer  "height",             default: 0,  null: false
     t.index ["status_id"], name: "index_preview_cards_on_status_id", unique: true, using: :btree
   end
 
@@ -317,6 +337,9 @@ ActiveRecord::Schema.define(version: 20170424112722) do
     t.boolean  "otp_required_for_login"
     t.datetime "last_emailed_at"
     t.string   "otp_backup_codes",                                       array: true
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "birthday"
     t.index ["account_id"], name: "index_users_on_account_id", using: :btree
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree

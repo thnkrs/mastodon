@@ -43,6 +43,9 @@
           ·
           = link_to t('about.about_this'), about_more_path
 
+  %h3= "Facebook Login"
+  .facebook-login
+    = link_to button_tag('Log in with Facebook'), user_facebook_omniauth_authorize_path
   %h3= 'Mastodon（マストドン）とは？'
   %p= 'マストドンは、所属するインスタンスを選んでアカウントを登録し、トゥートと呼ばれる投稿を通じてコミュニケーションを楽しむSNSです。オープンソースで公開されているため、誰でも自分のインスタンスを立ち上げることが可能である他、様々なインスタンスにアカウントを持つこともできます。また、インスタンス間を超えたやり取りも可能であるため、様々なコミュニティを介したコミュニケーションが展開されています。'
 

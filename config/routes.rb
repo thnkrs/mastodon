@@ -4,6 +4,8 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  health_check_routes
+
   mount LetterOpenerWeb::Engine, at: 'letter_opener' if Rails.env.development?
 
   authenticate :user, lambda { |u| u.admin? } do
@@ -23,6 +25,7 @@ Rails.application.routes.draw do
     registrations:      'auth/registrations',
     passwords:          'auth/passwords',
     confirmations:      'auth/confirmations',
+    omniauth_callbacks: 'auth/omniauth_callbacks'
   }
 
   get '/users/:username', to: redirect('/@%{username}'), constraints: { format: :html }
@@ -71,8 +74,7 @@ Rails.application.routes.draw do
   resources :tags,  only: [:show]
 
   # Remote follow
-  get  :authorize_follow, to: 'authorize_follow#new'
-  post :authorize_follow, to: 'authorize_follow#create'
+  resource :authorize_follow, only: [:show, :create]
 
   namespace :admin do
     resources :pubsubhubbub, only: [:index]
