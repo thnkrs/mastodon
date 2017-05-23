@@ -38,8 +38,10 @@
     font-size: 20px;
     line-height: 28px;
     font-weight: 400;
+    margin-top: 20px;
     margin-bottom: 20px;
-    color: $thinkers-color;
+    color: black;
+    font-weight: bold;
   }
 
   ul, ol {
@@ -68,6 +70,10 @@
       color: $color4;
       text-decoration: underline;
     }
+  }
+
+  span {
+    color: red;
   }
 
   em {
@@ -101,7 +107,7 @@
       line-height: 36px;
 
       a {
-        color: $thinkers-color;
+        color: $my-black1;
         text-decoration: underline;
       }
     }
@@ -349,6 +355,28 @@
       flex: auto;
     }
   }
+
+  .login-block {
+    margin: 10px auto;
+    padding: 30px 0;
+    span {
+      color: $my-black1;
+      padding: 0 10px;
+    }
+    a.btn {
+      color: white;
+      padding: 10px 20px;
+      font-size: 18px;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+    .blue {
+      background-color: $thinkers-color;
+    }
+    .gray {
+      background-color: $my-black3;
+    }
+  }
 }
 
 .closed-registrations-message {
@@ -357,4 +385,12 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+.think-block {
+  width: calc(100% - 20px);
+  height: 300px;
+  padding: 10px;
+  border: 1px solid $my-black1;
+  border-radius: 10px;
 }
