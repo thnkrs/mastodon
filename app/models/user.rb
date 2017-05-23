@@ -34,8 +34,8 @@ class User < ApplicationRecord
     raise "Birthday is not given to the user: #{account.username}" if birthday.blank?
 
     now = Date.today
-    now.year - birthday.year
-      ((birthday.month > now.month || (birthday.month == now.month && birthday.day > now.day)) ? 0 : 1)
+    now.year - birthday.year \
+      - ((birthday.month > now.month || (birthday.month == now.month && birthday.day > now.day)) ? 0 : 1)
   end
 
   def confirmed?
