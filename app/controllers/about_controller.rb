@@ -4,10 +4,6 @@ class AboutController < ApplicationController
   before_action :set_body_classes
   before_action :set_instance_presenter, only: [:show, :more]
 
-  if ENV['BASIC_AUTH_NAME'].present?
-    http_basic_authenticate_with name: ENV['BASIC_AUTH_NAME'], password: ENV['BASIC_AUTH_PASSWORD']
-  end
-  
   def show; end
 
   def more; end

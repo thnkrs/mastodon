@@ -19,6 +19,9 @@ class ApplicationController < ActionController::Base
   before_action :store_current_location, except: :raise_not_found, unless: :devise_controller?
   before_action :set_user_activity
   before_action :check_suspension, if: :user_signed_in?
+  if ENV['BASIC_AUTH_NAME'].present?
+    before_action :basic_auth
+  end
 
   def raise_not_found
     raise ActionController::RoutingError, "No route matches #{params[:unmatched_route]}"
@@ -50,6 +53,15 @@ class ApplicationController < ActionController::Base
 
   def check_suspension
     head 403 if current_user.account.suspended?
+  end
+
+  def basic_auth
+    return if try!(:user_signed_in?)
+    return if request.format != Mime[:html]
+    
+    authenticate_or_request_with_http_basic('Authenticate') do |username, password|
+      username == ENV['BASIC_AUTH_NAME'] && password == ENV['BASIC_AUTH_PASSWORD']
+    end
   end
 
   protected

@@ -6,10 +6,6 @@ class Auth::RegistrationsController < Devise::RegistrationsController
   before_action :check_enabled_registrations, only: [:new, :create]
   before_action :configure_sign_up_params, only: [:create]
 
-  if ENV['BASIC_AUTH_NAME'].present?
-    http_basic_authenticate_with name: ENV['BASIC_AUTH_NAME'], password: ENV['BASIC_AUTH_PASSWORD']
-  end
-
   protected
 
   def build_resource(hash = nil)

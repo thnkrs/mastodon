@@ -2,10 +2,6 @@
 
 class HomeController < ApplicationController
   before_action :authenticate_user!
-  
-  if ENV['BASIC_AUTH_NAME'].present?
-    http_basic_authenticate_with name: ENV['BASIC_AUTH_NAME'], password: ENV['BASIC_AUTH_PASSWORD']
-  end
 
   def index
     @body_classes           = 'app-body'
