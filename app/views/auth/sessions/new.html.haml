@@ -3,8 +3,9 @@
 
 %p.bold= "中高生（10代）の方"
 
-.btn-block
-  = link_to 'Facebookで登録する', new_user_registration_path, class: 'btn-facebook'
+= simple_form_for(resource, as: resource_name, url: user_facebook_omniauth_authorize_path) do |f|
+  .actions
+    = f.button :button, 'Facebookで登録する', type: :submit
 
 %hr
 %p.bold.border= "高専生・大学生・大学院生・大学等教職員の方"
@@ -17,12 +18,3 @@
 
   .actions
     = f.button :button, t('auth.login'), type: :submit
-
-%hr
-
-= simple_form_for(resource, as: resource_name, url: user_facebook_omniauth_authorize_path) do |f|
-
-  .actions
-    = f.button :button, 'Login with Facebook', type: :submit
-
-.form-footer= render "auth/shared/links"
