@@ -1,6 +1,16 @@
 - content_for :page_title do
   = t('auth.register')
 
+%p.bold= "中高生（10代）の方"
+
+.btn-block
+  = link_to 'Facebookで登録する', new_user_registration_path, class: 'btn-facebook'
+
+%hr
+%p.bold.border= "高専生・大学生・大学院生・大学等教職員の方"
+%p= ".ac.jpまたは.eduのメールアドレスで登録してください。"
+%br
+
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = render 'shared/error_messages', object: resource
 

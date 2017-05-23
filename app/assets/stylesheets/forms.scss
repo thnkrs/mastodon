@@ -7,6 +7,31 @@ code {
   max-width: 400px;
   padding: 20px;
   margin: 0 auto;
+
+  p {
+    padding-bottom: 10px;
+    text-align: center;
+  }
+  p.bold {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  hr {
+    margin: 20px 0;
+  }
+  .btn-block {
+    padding: 40px 0;
+    margin: 0 auto;
+    text-align: center;
+    a.btn-facebook {
+      padding: 15px 25px;
+      margin: 20px 0;
+      color: white;
+      font-size: 16px;
+      text-decoration: none;
+      background-color: #419bdd;
+    }
+  }
 }
 
 .simple_form {
