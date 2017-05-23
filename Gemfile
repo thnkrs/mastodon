@@ -70,6 +70,7 @@ gem 'autoprefixer-rails'
 
 # Thinkers
 gem 'health_check'
+gem 'rollbar'
 
 group :development, :test do
   gem 'rspec-rails'
