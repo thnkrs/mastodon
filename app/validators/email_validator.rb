@@ -3,6 +3,7 @@
 class EmailValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     record.errors.add(attribute, I18n.t('users.invalid_email')) if blocked_email?(value)
+    record.errors.add(attribute, I18n.t('users.invalid_email_domain')) if record.birthday.blank? && !academic_account?(value)
   end
 
   private
@@ -27,5 +28,9 @@ class EmailValidator < ActiveModel::EachValidator
     regexp = Regexp.new("@(.+\\.)?(#{domains})$", true)
 
     value !~ regexp
+  end
+
+  def academic_account?(value)
+    value.end_with?(*%w[.ac.jp .edu thinkers.jp])
   end
 end

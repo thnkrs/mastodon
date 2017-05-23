@@ -338,4 +338,5 @@ ja:
     wrong_code: コードが間違っています。サーバー上の時間とデバイス上の時間が一致していることを確認してください。
   users:
     invalid_email: メールアドレスが無効です
+    invalid_email_domain: .ac.jpまたは.edu で終わるメールドメインのみ登録可能です。
     invalid_otp_token: 二段階認証コードが間違っています
