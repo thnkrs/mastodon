@@ -7,6 +7,18 @@ code {
   max-width: 400px;
   padding: 20px;
   margin: 0 auto;
+
+  p {
+    padding-bottom: 10px;
+    text-align: center;
+  }
+  p.bold {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  hr {
+    margin: 20px 0;
+  }
 }
 
 .simple_form {
@@ -16,7 +28,7 @@ code {
 
   span.hint {
     display: block;
-    color: $my-black2;
+    color: $th-black2;
     font-size: 12px;
     margin-top: 4px;
   }
@@ -49,7 +61,7 @@ code {
     label {
       font-family: inherit;
       font-size: 16px;
-      color: $my-black1;
+      color: $th-black1;
       display: block;
       padding-top: 5px;
     }
@@ -63,7 +75,7 @@ code {
     margin-bottom: 5px;
     font-family: inherit;
     font-size: 14px;
-    color: $my-black1;
+    color: $th-black1;
     display: block;
     width: auto;
   }
@@ -105,7 +117,7 @@ code {
     border-radius: 2px 2px 0 0;
     padding: 7px 4px;
     font-size: 16px;
-    color: $my-black1;
+    color: $th-black1;
     display: block;
     width: 100%;
     outline: 0;
@@ -199,7 +211,7 @@ code {
 
 .flash-message {
   background: $thinkers-color;
-  color: $my-black6;
+  color: $th-black6;
   border-radius: 4px;
   padding: 15px 10px;
   margin-bottom: 30px;

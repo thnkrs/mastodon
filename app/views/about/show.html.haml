@@ -20,11 +20,16 @@
     = image_tag 'thinkers-logo.png'
     = 'Thinkers'
 
-  %p= 'ピクシブが運営するマストドンインスタンス「Pawoo」は、文章や画像を投稿して楽しむSNSです。 「創作活動や自由なコミュニケーションを楽しめる場」として、どなたにも幅広く使っていただけます。'
+  %p
+    = 'thinkers.ac（シンカーズ）は、学び合いのMastodon（マストドン）です。考えていることや聞きたいことなどを投稿して、有意義な学び合いの場にしていきましょう。'
+    %span= 'なお、中高生（10代）と高専生・大学生・大学院生・大学等教職員の方以外は登録できません。'
 
   .screenshot-with-signup
     - if @instance_presenter.open_registrations
-      = render 'registration'
+      .login-block
+        = link_to '参加する', new_user_registration_path, class: 'btn blue'
+        %span= 'または'
+        = link_to 'ログイン', new_user_session_path, class: 'btn gray'
     - else
       .closed-registrations-message
         - if @instance_presenter.closed_registrations_message.blank?
@@ -38,11 +43,33 @@
           ·
           = link_to t('about.about_this'), about_more_path
 
-  %h3= "Facebook Login"
-  .facebook-login
-    = link_to button_tag('Log in with Facebook'), user_facebook_omniauth_authorize_path
   %h3= 'Mastodon（マストドン）とは？'
   %p= 'マストドンは、所属するインスタンスを選んでアカウントを登録し、トゥートと呼ばれる投稿を通じてコミュニケーションを楽しむSNSです。オープンソースで公開されているため、誰でも自分のインスタンスを立ち上げることが可能である他、様々なインスタンスにアカウントを持つこともできます。また、インスタンス間を超えたやり取りも可能であるため、様々なコミュニティを介したコミュニケーションが展開されています。'
+
+  %h3= '使い方と注意点'
+
+  .features-list
+    .features-list__column
+      %ul.fa-ul
+        %li
+          = fa_icon('li check-square')
+          = 'Think!（投稿）してみましょう（公開範囲は選択できます）'
+        %li
+          = fa_icon('li check-square')
+          = 'タイムラインを見て気になったユーザーをフォローしたり、投稿をブースト（拡散）したり、コメントしたりしてみましょう'
+        %li
+          = fa_icon('li check-square')
+          = '教科やテーマのハッシュタグを付けて、投稿してみましょう'
+        %li
+          = fa_icon('li check-square')
+          = 'CW機能を使って、一問一答のクイズ形式の投稿ができます'
+        %li
+          = fa_icon('li check-square')
+          = 'プロフィールを詐称している疑いがあるか、公序良俗・サービス趣旨に反すると運営が判断した場合、告知なく利用を停止する可能性があります'
+
+  %h3= '最近のThink!（投稿）'
+  .think-block
+    %p= @status.text
 
   %h3= t('about.features_headline')
 

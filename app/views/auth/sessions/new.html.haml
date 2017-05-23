@@ -1,18 +1,20 @@
 - content_for :page_title do
   = t('auth.login')
 
+%p.bold= "中高生（10代）の方"
+
+= simple_form_for(resource, as: resource_name, url: user_facebook_omniauth_authorize_path) do |f|
+  .actions
+    = f.button :button, 'Facebookで登録する', type: :submit
+
+%hr
+%p.bold.border= "高専生・大学生・大学院生・大学等教職員の方"
+%p= ".ac.jpまたは.eduのメールアドレスでログインしてください。"
+%br
+
 = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   = f.input :email, autofocus: true, placeholder: t('simple_form.labels.defaults.email'), required: true, input_html: { 'aria-label' => t('simple_form.labels.defaults.email') }
   = f.input :password, placeholder: t('simple_form.labels.defaults.password'), required: true, input_html: { 'aria-label' => t('simple_form.labels.defaults.password') }
 
   .actions
     = f.button :button, t('auth.login'), type: :submit
-
-%hr
-
-= simple_form_for(resource, as: resource_name, url: user_facebook_omniauth_authorize_path) do |f|
-
-  .actions
-    = f.button :button, 'Login with Facebook', type: :submit
-
-.form-footer= render "auth/shared/links"

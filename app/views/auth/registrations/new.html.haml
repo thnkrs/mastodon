@@ -1,6 +1,17 @@
 - content_for :page_title do
   = t('auth.register')
 
+%p.bold= "中高生（10代）の方"
+
+= simple_form_for(resource, as: resource_name, url: user_facebook_omniauth_authorize_path) do |f|
+  .actions
+    = f.button :button, 'Facebookで登録する', type: :submit
+
+%hr
+%p.bold.border= "高専生・大学生・大学院生・大学等教職員の方"
+%p= ".ac.jpまたは.eduのメールアドレスで登録してください。"
+%br
+
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = render 'shared/error_messages', object: resource
 
@@ -13,11 +24,5 @@
 
   .actions
     = f.button :button, t('auth.register'), type: :submit
-
-%hr
-
-= simple_form_for(resource, as: resource_name, url: user_facebook_omniauth_authorize_path) do |f|
-  .actions
-    = f.button :button, 'Sign up with Facebook', type: :submit
 
 .form-footer= render "auth/shared/links"

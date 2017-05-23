@@ -1,12 +1,10 @@
 body {
   font-family: 'Roboto', sans-serif;
-  background: $my-black5 image-url('background-photo.jpg');
-  background-size: cover;
-  background-attachment: fixed;
+  background-color: $th-black5;
   font-size: 13px;
   line-height: 18px;
   font-weight: 400;
-  color: $my-black1;
+  color: $th-black1;
   padding-bottom: 140px;
   text-rendering: optimizelegibility;
   font-feature-settings: "kern";
@@ -32,7 +30,7 @@ body {
   }
 
   &.admin {
-    background: $my-black5;
+    background: $th-black5;
     position: fixed;
     width: 100%;
     height: 100%;
