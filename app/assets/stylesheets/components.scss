@@ -242,7 +242,7 @@
 
 .compose-form__buttons {
   padding: 10px;
-  background: $my-black6;
+  background: $th-black6;
   border-radius: 0 0 4px 4px;
   display: flex;
 
@@ -461,7 +461,7 @@ a.status__content__spoiler-link {
   padding-left: 68px;
   position: relative;
   min-height: 48px;
-  border-bottom: 1px solid $my-black3;
+  border-bottom: 1px solid $th-black3;
   cursor: default;
 
   &.light {
@@ -576,7 +576,7 @@ a.status__content__spoiler-link {
 }
 
 .detailed-status {
-  background: $my-black6;
+  background: $th-black6;
   padding: 14px 10px;
 
   .status__content {
@@ -598,10 +598,10 @@ a.status__content__spoiler-link {
 }
 
 .detailed-status__action-bar {
-  background: $my-black6;
+  background: $th-black6;
   background: lighten($color1, 4%);
   border-top: 1px solid lighten($color1, 8%);
-  border-bottom: 1px solid $my-black4;
+  border-bottom: 1px solid $th-black4;
   display: flex;
   flex-direction: row;
   padding: 10px 0;
@@ -668,7 +668,7 @@ a.status__content__spoiler-link {
 
 .account__header {
   flex: 0 0 auto;
-  background: $my-black6;
+  background: $th-black6;
   text-align: center;
   background-size: cover;
   background-position: center;
@@ -679,7 +679,7 @@ a.status__content__spoiler-link {
   }
 
   .account__header__display-name {
-    color: $my-black1;
+    color: $th-black1;
   }
 
   .account__header__username {
@@ -721,8 +721,8 @@ a.status__content__spoiler-link {
 }
 
 .account__action-bar {
-  border-top: 1px solid $my-black3;
-  border-bottom: 1px solid $my-black3;
+  border-top: 1px solid $th-black3;
+  border-bottom: 1px solid $th-black3;
   line-height: 36px;
   overflow: hidden;
   flex: 0 0 auto;
@@ -744,21 +744,21 @@ a.status__content__spoiler-link {
   text-decoration: none;
   overflow: hidden;
   width: 80px;
-  border-left: 1px solid $my-black3;
+  border-left: 1px solid $th-black3;
   padding: 10px 5px;
 
   & > span {
     display: block;
     text-transform: uppercase;
     font-size: 11px;
-    color: $my-black2;
+    color: $th-black2;
   }
 
   strong {
     display: block;
     font-size: 15px;
     font-weight: 500;
-    color: $my-black1;
+    color: $th-black1;
   }
 
   abbr {
@@ -802,7 +802,7 @@ a.status__content__spoiler-link {
 .status__display-name,
 .account__display-name {
   strong {
-    color: $my-black1;
+    color: $th-black1;
   }
 
   &.muted {
@@ -932,7 +932,7 @@ a.status__content__spoiler-link {
   white-space: nowrap;
 
   .display-name__html {
-    color: $my-black1 !important;
+    color: $th-black1 !important;
     text-decoration: none !important;
   }
 }
@@ -968,7 +968,7 @@ a.status__content__spoiler-link {
   color: $color3;
 
   strong {
-    color: $my-black1;
+    color: $th-black1;
   }
 
   .permalink {
@@ -1122,7 +1122,7 @@ a.status__content__spoiler-link {
   flex-direction: column;
 
   > .scrollable {
-    background: $my-black6;
+    background: $th-black6;
   }
 }
 
@@ -1132,7 +1132,7 @@ a.status__content__spoiler-link {
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background: $my-black5;
+  background: $th-black5;
 }
 
 .drawer {
@@ -1240,9 +1240,9 @@ a.status__content__spoiler-link {
   position: absolute;
   top: 0;
   left: 0;
-  background: $my-black6;
+  background: $th-black6;
   box-sizing: border-box;
-  border: 1px solid $my-black4;
+  border: 1px solid $th-black4;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -1292,7 +1292,7 @@ a.status__content__spoiler-link {
   display: block;
   flex: 1 1 auto;
   padding: 15px 10px;
-  color: $my-black6;
+  color: $th-black6;
   text-decoration: none;
   text-align: center;
   font-size: 14px;
@@ -1381,7 +1381,7 @@ a.status__content__spoiler-link {
 
 .column-back-button {
   background: $thinkers-color;
-  color: $my-black6;
+  color: $th-black6;
   cursor: pointer;
   flex: 0 0 auto;
   font-size: 16px;
@@ -1519,8 +1519,8 @@ a.status__content__spoiler-link {
 }
 
 .column-link {
-  background: $my-black6;
-  color: $my-black1;
+  background: $th-black6;
+  color: $th-black1;
   display: block;
   font-size: 16px;
   padding: 15px;
@@ -1583,7 +1583,7 @@ a.status__content__spoiler-link {
 .autosuggest-textarea__textarea {
   min-height: 100px;
   background: $color5;
-  border: 1px solid $my-black4;
+  border: 1px solid $th-black4;
   border-radius: 4px 4px 0 0;
   padding-bottom: 0;
   padding-right: 10px + 22px;
@@ -1922,7 +1922,7 @@ button.icon-button.active i.fa-retweet {
 }
 
 .column-settings__section {
-  color: $color3;
+  color: white;
   cursor: default;
   display: block;
   font-weight: 500;
@@ -2031,7 +2031,7 @@ button.icon-button.active i.fa-retweet {
 
 .empty-column-indicator {
   color: lighten($color1, 20%);
-  background: $my-black6;
+  background: $th-black6;
   text-align: center;
   padding: 20px;
   font-size: 15px;
@@ -2449,7 +2449,7 @@ button.icon-button.active i.fa-retweet {
 
 .search {
   position: relative;
-  border: 1px solid $my-black3;
+  border: 1px solid $th-black3;
 }
 
 .search__input {
@@ -2464,7 +2464,7 @@ button.icon-button.active i.fa-retweet {
   padding-right: 30px;
   font-family: inherit;
   background: $color5;
-  color: $my-black1;
+  color: $th-black1;
   font-size: 14px;
   margin: 0;
 
@@ -2493,7 +2493,7 @@ button.icon-button.active i.fa-retweet {
     font-size: 18px;
     width: 18px;
     height: 18px;
-    color: $my-black1;
+    color: $th-black1;
     cursor: default;
     pointer-events: none;
 
@@ -2528,7 +2528,7 @@ button.icon-button.active i.fa-retweet {
 }
 
 .search-results__header {
-  color: $my-black6;
+  color: $th-black6;
   background: $thinkers-color;
   padding: 15px 10px;
   font-size: 14px;

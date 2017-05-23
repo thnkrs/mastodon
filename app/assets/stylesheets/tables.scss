@@ -24,11 +24,11 @@
 
   & > tbody > tr:nth-child(odd) > td, & > tbody > tr:nth-child(odd) > th {
     background: $thinkers-color;
-    color: $my-black6;
+    color: $th-black6;
   }
 
   a {
-    color: $my-black6;
+    color: $th-black6;
     text-decoration: underline;
 
     &:hover {
@@ -50,7 +50,7 @@ a.table-action-link {
   display: inline-block;
   margin-right: 5px;
   padding: 0 10px;
-  color: $my-black6;
+  color: $th-black6;
   font-weight: 500;
 
   i.fa {
