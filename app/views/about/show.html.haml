@@ -109,6 +109,12 @@
 
   .actions
     .info
+      = link_to 'このインスタンスについて', about_more_path
+      ・
+      = link_to '運営企業', 'http://www.thinkers.jp/'
+      ・
+      = link_to t('about.terms'), terms_path
+      ・
       = link_to t('about.terms'), terms_path
       ·
       = link_to t('about.apps'), 'https://github.com/tootsuite/documentation/blob/master/Using-Mastodon/Apps.md'
