@@ -7,8 +7,10 @@
     %ul
     - if @user.email.blank?
       %li Facebookからメールアドレスを読み取ることが出来ませんでした。
-    - unless @user.teenager?
+    - if @user.birthday.blank?
       %li Facebookから年齢を読み取ることが出来ませんでした。
+    - elsif ! @user.teenager?
+      %li Facebookに登録されている年齢が10代ではありません。
   %p
     Facebookから一度アプリを削除し、再び認証してください。
   %p
