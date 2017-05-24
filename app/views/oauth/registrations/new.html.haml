@@ -33,7 +33,7 @@
 
       /age を表示して、それが参加条件である事を認識させる。
       = f.label :age
-      = f.input :age, disabled: true
+      = f.input :age, disabled: true, placeholder: t('simple_form.labels.defaults.age'), input_html: { 'aria-label' => t('simple_form.labels.defaults.age') }
 
     .actions
       = f.button :button, t('auth.register'), type: :submit

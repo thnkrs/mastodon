@@ -34,6 +34,7 @@ ja:
         severity: 重大性
         type: インポートする項目
         username: ユーザー名
+        age: 年齢
       interactions:
         must_be_follower: フォロワー以外からの通知をブロック
         must_be_following: フォローしていないユーザーからの通知をブロック
