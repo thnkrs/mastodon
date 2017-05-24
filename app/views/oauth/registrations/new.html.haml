@@ -1,0 +1,39 @@
+- content_for :page_title do
+  = t('auth.oauth_registration')
+
+
+- if @user.email.blank? || ! @user.teenager?
+  %div#error_explanation.flash-message
+    %ul
+    - if @user.email.blank?
+      %li Facebookからメールアドレスを読み取ることが出来ませんでした。
+    - unless @user.teenager?
+      %li Facebookから年齢を読み取ることが出来ませんでした。
+  %p
+    Facebookから一度アプリを削除し、再び認証してください。
+  %p
+    =link_to 'Facebookの設定を開く', "https://m.facebook.com/privacy/touch/apps/permissions/?appid=#{ENV['FACEBOOK_APP_ID']}", target: '_blank', class: 'button'
+  %hr.hr
+  %p
+    =link_to 'もう一度Facebookで登録', new_user_registration_path, class: 'button'
+    %br
+    %small ※Facebook認証の際、メールアドレス、年齢のチェックを入れたまま進めてください
+- else
+  = simple_form_for(@user, url: user_oauth_registration_path, method: 'POST') do |f|
+    = render 'shared/error_messages', object: f.object
+    %ul
+      - @user.errors.full_messages.each do |msg|
+        %li= msg
+    .omniauth
+      = f.simple_fields_for :account do |ff|
+        = ff.label :username
+        = ff.input :username, autofocus: true, placeholder: t('simple_form.labels.defaults.username'), required: true, input_html: { 'aria-label' => t('simple_form.labels.defaults.username') }
+      = f.label :email
+      = f.input :email, disabled: true, input_html: { 'aria-label' => t('simple_form.labels.defaults.email') }
+
+      /age を表示して、それが参加条件である事を認識させる。
+      = f.label :age
+      = f.input :age, disabled: true
+
+    .actions
+      = f.button :button, t('auth.register'), type: :submit
