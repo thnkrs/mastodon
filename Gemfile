@@ -67,6 +67,7 @@ gem 'turnout'
 gem 'react-rails'
 gem 'browserify-rails'
 gem 'autoprefixer-rails'
+gem 'redis-namespace'
 
 # Thinkers
 gem 'health_check'
