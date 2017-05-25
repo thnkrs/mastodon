@@ -3,7 +3,7 @@
 class EmailValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     record.errors.add(attribute, I18n.t('users.invalid_email')) if blocked_email?(value)
-    record.errors.add(attribute, I18n.t('users.invalid_email_domain')) if record.birthday.blank? && !academic_account?(value)
+    record.errors.add(attribute, I18n.t('users.invalid_email_domain')) if !record.facebook_login? && !academic_account?(value)
   end
 
   private

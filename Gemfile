@@ -67,6 +67,7 @@ gem 'turnout'
 gem 'react-rails'
 gem 'browserify-rails'
 gem 'autoprefixer-rails'
+gem 'redis-namespace'
 
 # Thinkers
 gem 'health_check'
@@ -78,6 +79,7 @@ group :development, :test do
   gem 'fuubar'
   gem 'fabrication'
   gem 'i18n-tasks', '~> 0.9.6'
+  gem 'byebug'
 end
 
 group :test do

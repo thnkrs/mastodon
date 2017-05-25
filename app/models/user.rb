@@ -19,15 +19,19 @@ class User < ApplicationRecord
   validates :email, email: true
 
   validate :must_be_teenager, if: -> { birthday.present? }
+  validates :birthday, presence: true, if: :facebook_login?
 
   scope :recent,    -> { order('id desc') }
   scope :admins,    -> { where(admin: true) }
   scope :confirmed, -> { where.not(confirmed_at: nil) }
 
   def must_be_teenager
-    return true if age >= 10 && age < 20
+    errors.add(:base, 'Facebookで登録するには10代である必要があります。') unless teenager?
+  end
 
-    errors.add(:base, 'Facebookで登録するには10代である必要があります。')
+  def teenager?
+    return false if birthday.blank?
+    age >= 10 && age < 20
   end
 
   def age
@@ -59,51 +63,53 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    user = joins(:credential).where(credentials: { provider: auth.provider, uid: auth.uid }).first
-    if user
-      user.credential.update \
-        provider: auth.provider,
-        uid: auth.uid,
-        token: auth.credentials.token,
-        expires_at: Time.at(auth.credentials.expires_at)
+    # jsonにキャッシュしたもので来る場合と、生で来る場合があるので正規化
+    auth = auth.as_json.with_indifferent_access
 
+    provider = auth[:provider]
+    uid = auth[:uid]
+    credentials_token = auth.dig(:credentials, :token)
+    credentials_expires_at = Time.at auth.dig(:credentials, :expires_at)
+
+    credential_params = {
+      provider: provider,
+      uid: uid,
+      token: credentials_token,
+      expires_at: credentials_expires_at,
+    }
+
+    user = joins(:credential).where(credentials: { provider: provider, uid: uid }).first
+    if user
+      user.credential.update credential_params
       return user
     end
 
+    email = auth.dig(:info, :email)
     password = Devise.friendly_token[0, 20]
     user = User.new \
-      email: auth.info.email,
+      email: email,
       password: password,
       password_confirmation: password
 
-    if user.credential.blank?
-      user.build_credential \
-        provider: auth.provider,
-        uid: auth.uid,
-        token: auth.credentials.token,
-        expires_at: Time.at(auth.credentials.expires_at)
-    end
+    user.build_credential credential_params if user.credential.blank?
 
-    birthday = Koala::Facebook::API.new(user.credential.token).get_object('me', fields: 'birthday')['birthday']
-    user.birthday = Date.strptime(birthday, '%M/%d/%Y')
+    user.build_account if user.account.blank?
 
-    if user.account.blank?
-      user.build_account
-      user.account.username = auth.extra.raw_info.username
-
-      # TODO: 登録時ユーザーが指定できるようにする
-      if auth.extra.raw_info.username
-        user.account.username = username
-      else
-        username = user.email.split('@').first
-        user.account.username = username.gsub(/[^a-z0-9_]/, '')
-      end
-      user.account.display_name = auth.info.name
-    end
-
-    user.skip_confirmation!
-    user.save
     user
+  end
+
+  def load_facebook_birthday
+    fail 'birthday only supports Facebook' unless facebook_login?
+    birthday = Koala::Facebook::API.new(self.credential.token).get_object('me', fields: 'birthday')['birthday']
+    self.birthday = Date.strptime(birthday, '%M/%d/%Y') if birthday.present?
+  rescue Koala::KoalaError
+    self.birthday = nil
+  ensure
+    self.birthday
+  end
+
+  def facebook_login?
+    self.credential.try!(:provider) == 'facebook'
   end
 
   def self.new_with_session(params, session)
