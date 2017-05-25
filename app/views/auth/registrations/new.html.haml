@@ -2,6 +2,7 @@
   = t('auth.register')
 
 %p.bold= "中高生（10代）の方"
+%p= "10代の方だけFacebookで登録してください。"
 
 = simple_form_for(resource, as: resource_name, url: user_facebook_omniauth_authorize_path) do |f|
   .actions
