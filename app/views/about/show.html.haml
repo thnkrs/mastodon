@@ -67,7 +67,9 @@
   - if @status.present?
     %h3= '最近のThink!（投稿）'
     .think-block
-      %p= @status.text
+      %p.display_name= @status.account.display_name
+      %p.username= "@" + @status.account.username
+      %p.text= @status.text
 
   %h3= t('about.features_headline')
 
