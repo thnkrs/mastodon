@@ -64,9 +64,10 @@
           = fa_icon('li check-square')
           = 'プロフィールを詐称している疑いがあるか、公序良俗・サービス趣旨に反すると運営が判断した場合、告知なく利用を停止する可能性があります'
 
-  %h3= '最近のThink!（投稿）'
-  .think-block
-    %p= @status.text
+  - if @status.present?
+    %h3= '最近のThink!（投稿）'
+    .think-block
+      %p= @status.text
 
   %h3= t('about.features_headline')
 
