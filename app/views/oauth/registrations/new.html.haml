@@ -30,8 +30,6 @@
       = f.simple_fields_for :account do |ff|
         = ff.label :username
         = ff.input :username, autofocus: true, placeholder: t('simple_form.labels.defaults.username'), required: true, input_html: { 'aria-label' => t('simple_form.labels.defaults.username') }
-      = f.label :email
-      = f.input :email, disabled: true, input_html: { 'aria-label' => t('simple_form.labels.defaults.email') }
 
       /age を表示して、それが参加条件である事を認識させる。
       = f.label :age
