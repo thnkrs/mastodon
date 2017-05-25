@@ -23,6 +23,14 @@
       width: 46px;
       height: 46px;
     }
+
+    span.thinkers {
+      color: $thinkers-color;
+    }
+
+    span.ac {
+      color: $thinkers-ac;
+    }
   }
 
   h2 {
@@ -64,7 +72,7 @@
   p, li {
     font: 16px/28px 'Montserrat', sans-serif;
     font-weight: 400;
-    margin-bottom: 30px;
+    word-wrap: break-word;
 
     a {
       color: $color4;

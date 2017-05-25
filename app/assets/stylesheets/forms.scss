@@ -9,7 +9,6 @@ code {
   margin: 0 auto;
 
   p {
-    padding-bottom: 10px;
     text-align: center;
   }
   p.bold {
@@ -17,7 +16,7 @@ code {
     font-weight: bold;
   }
   hr {
-    margin: 20px 0;
+    margin: 40px 0;
   }
 }
 
@@ -172,7 +171,6 @@ code {
     color: $color5;
     font-size: 18px;
     padding: 10px;
-    text-transform: uppercase;
     text-decoration: none;
     text-align: center;
     box-sizing: border-box;

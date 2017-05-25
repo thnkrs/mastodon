@@ -5,7 +5,7 @@ class AboutController < ApplicationController
   before_action :set_instance_presenter, only: [:show, :more]
 
   def show
-    @status = Status.first
+    @status = Status.with_public_visibility.local.first
   end
 
   def more; end
