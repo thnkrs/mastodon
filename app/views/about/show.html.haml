@@ -18,7 +18,8 @@
 .wrapper
   %h1
     = image_tag 'thinkers-logo.png'
-    = 'THINKERS.AC'
+    %span.thinkers= 'THINKERS'
+    %span.ac= '.AC'
 
   %p
     = 'THINKERS.AC（シンカーズ）は、学び合いのMastodon（マストドン）です。考えていることや聞きたいことなどを投稿して、有意義な学び合いの場にしていきましょう。'
@@ -116,3 +117,4 @@
       = link_to t('about.source_code'), 'https://github.com/tootsuite/mastodon'
       ·
       = link_to t('about.other_instances'), 'https://github.com/tootsuite/documentation/blob/master/Using-Mastodon/List-of-Mastodon-instances.md'
+
