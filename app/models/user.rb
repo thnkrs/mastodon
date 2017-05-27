@@ -70,12 +70,14 @@ class User < ApplicationRecord
     uid = auth[:uid]
     credentials_token = auth.dig(:credentials, :token)
     credentials_expires_at = Time.at auth.dig(:credentials, :expires_at)
+    profile_link = auth.dig(:extra, :raw_info, :link)
 
     credential_params = {
       provider: provider,
       uid: uid,
       token: credentials_token,
       expires_at: credentials_expires_at,
+      link: profile_link
     }
 
     user = joins(:credential).where(credentials: { provider: provider, uid: uid }).first
