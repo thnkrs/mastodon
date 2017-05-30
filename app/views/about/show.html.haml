@@ -71,7 +71,7 @@
         %p.display_name
           = status.account.display_name
           %span.username= "@" + status.account.username
-        %span.date= distance_of_time_in_words_to_now(status.created_at) + '前'
+          %span.date= distance_of_time_in_words_to_now(status.created_at) + '前'
         %p.text= status.spoiler_text.present?? status.spoiler_text : status.text
 
   %h3= t('about.features_headline')

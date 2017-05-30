@@ -419,9 +419,8 @@
     color: $thinkers-color;
   }
   span.date {
-    position: absolute;
-    top: 15px;
-    right: 5px;
+    font-size: 18px;
+    padding-bottom: 10px;
     color: $th-black2;
   }
   p.text {
