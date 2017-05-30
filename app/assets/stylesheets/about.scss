@@ -398,12 +398,13 @@
   text-align: center;
 }
 
+.bxslider {
+  margin: 0 !important;
+}
 .think-block {
   position: relative;
-  width: calc(100% - 20px);
+  height: 180px;
   padding: 10px;
-  border: 1px solid $th-black1;
-  border-radius: 10px;
   text-align: left;
   img {
     padding: 10px;
@@ -413,19 +414,20 @@
   p.display_name {
     font-size: 24px;
   }
-  li {
-    span.username {
-      font-size: 18px;
-      padding-bottom: 10px;
-      color: $thinkers-color;
-    }
-    span.date {
-      font-size: 18px;
-      padding-bottom: 10px;
-      color: $th-black2;
-    }
-    p.text {
-      text-align: left;
-    }
+  span.username {
+    font-size: 14px;
+    padding-bottom: 10px;
+    color: $thinkers-color;
+  }
+  span.date {
+    font-size: 14px;
+    padding-bottom: 10px;
+    color: $th-black2;
+  }
+  p.text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
   }
 }
