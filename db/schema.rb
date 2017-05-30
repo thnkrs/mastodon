@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20170527065425) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "link",       null: false
+    t.string   "link"
     t.index ["user_id"], name: "index_credentials_on_user_id", using: :btree
   end
 
