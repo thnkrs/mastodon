@@ -1,4 +1,4 @@
-%ul.no-list
+%ul.no-list.auth-shared-links
   - if controller_name != 'sessions'
     %li= link_to t('auth.login'), new_session_path(resource_name)
 
