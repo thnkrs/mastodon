@@ -33,7 +33,7 @@
       %tr
         %td
           = account.username
-          - if account.user.credential.try!(:link)
+          - if account.user.try!(:credential).try!(:link)
             = link_to account.user.credential.link do
               = image_tag 'FB-f-Logo__blue_29.png', size: '15'
         %td
