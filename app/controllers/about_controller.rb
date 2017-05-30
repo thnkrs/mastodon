@@ -5,7 +5,7 @@ class AboutController < ApplicationController
   before_action :set_instance_presenter, only: [:show, :more]
 
   def show
-    @status = Status.joins(:account).with_public_visibility.local.first
+    @statuses = Status.joins(:account).with_public_visibility.local.limit(10)
   end
 
   def more; end
