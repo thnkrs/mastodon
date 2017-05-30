@@ -13,6 +13,7 @@ $(function () {
     mode: 'vertical',
     controls: false,
     adaptiveHeight: true,
-    auto: true
+    auto: true,
+    pager: false
   });
 });
