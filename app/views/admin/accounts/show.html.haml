@@ -5,7 +5,11 @@
   %tbody
     %tr
       %th= t('admin.accounts.username')
-      %td= @account.username
+      %td
+        = @account.username
+        - unless @account.user.credential.blank?
+          = link_to @account.user.credential.link do
+            = image_tag 'FB-f-Logo__blue_29.png', size: '15'
     %tr
       %th= t('admin.accounts.domain')
       %td= @account.domain
