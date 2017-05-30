@@ -72,6 +72,7 @@ gem 'redis-namespace'
 # Thinkers
 gem 'health_check'
 gem 'rollbar'
+gem 'bxslider-rails'
 
 group :development, :test do
   gem 'rspec-rails'
