@@ -69,7 +69,7 @@
     .think-block
       %p.display_name= @status.account.display_name
       %p.username= "@" + @status.account.username
-      %p.text= @status.text
+      %p.text= @status.spoiler_text.present?? @status.spoiler_text : @status.text
 
   %h3= t('about.features_headline')
 
