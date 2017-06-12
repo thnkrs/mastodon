@@ -26,6 +26,13 @@
     background: $thinkers-color;
     color: $th-black6;
   }
+  & > tbody > tr:nth-child(even) {
+    & > td, & > th {
+      &, .table-action-link {
+        color: $color1;
+      }
+    }
+  }
 
   a {
     color: $th-black6;
