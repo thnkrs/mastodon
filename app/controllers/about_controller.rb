@@ -6,7 +6,7 @@ class AboutController < ApplicationController
 
   def show
     @statuses = Status.joins(:account).with_public_visibility.without_reblogs.without_replies.\
-      where(sensitive: false).local.limit(10)
+      where(sensitive: [false, nil]).local.limit(10)
   end
 
   def more; end
