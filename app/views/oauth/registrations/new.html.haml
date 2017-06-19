@@ -6,9 +6,9 @@
   %div#error_explanation.flash-message
     %ul
     - if @user.email.blank?
-      %li Facebookからメールアドレスを読み取ることが出来ませんでした。
+      %li Facebookからメールアドレスを読み取ることが出来ませんでした。 Facebookの設定画面からメールアドレスの入力をお願いします。
     - if @user.birthday.blank?
-      %li Facebookから年齢を読み取ることが出来ませんでした。
+      %li Facebookから年齢を読み取ることが出来ませんでした。 Facebookの設定画面から誕生年・誕生日の入力をお願いします。
     - elsif ! @user.teenager?
       %li Facebookに登録されている年齢が10代ではありません。
   %p
