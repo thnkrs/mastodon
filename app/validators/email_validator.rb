@@ -31,6 +31,6 @@ class EmailValidator < ActiveModel::EachValidator
   end
 
   def academic_account?(value)
-    value.end_with?(*%w[.ac.jp .ac.uk .edu .edu.au @thinkers.jp .thinkers.jp @aoyama.jp .aoyama.jp @chiba-u.jp .chiba-u.jp @hgu.jp .hgu.jp @keio.jp .keio.jp @naist.jp .naist.jp @oecu.jp .oecu.jp @oist.jp .oist.jp @ous.jp .ous.jp @sendai-nct.jp .sendai-nct.jp @senshu-u.jp .senshu-u.jp @tokai-u.jp .tokai-u.jp @toyo.jp .toyo.jp @waseda.jp .waseda.jp @chibakoudai.jp .chibakoudai.jp @gakken.co.jp @taktopia.com @lne.st])
+    value.end_with?(*%w[.ac.jp .ac.uk .edu .edu.au @thinkers.jp .thinkers.jp @aoyama.jp .aoyama.jp @chiba-u.jp .chiba-u.jp @gob-ip.net .gob-ip.net @hgu.jp .hgu.jp @keio.jp .keio.jp @naist.jp .naist.jp @oecu.jp .oecu.jp @oist.jp .oist.jp @ous.jp .ous.jp @sendai-nct.jp .sendai-nct.jp @senshu-u.jp .senshu-u.jp @tokai-u.jp .tokai-u.jp @toyo.jp .toyo.jp @waseda.jp .waseda.jp @chibakoudai.jp .chibakoudai.jp @gakken.co.jp @taktopia.com @lne.st])
   end
 end
