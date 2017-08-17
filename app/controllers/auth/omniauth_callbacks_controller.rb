@@ -5,9 +5,19 @@ class Auth::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.from_omniauth(request.env['omniauth.auth'])
 
     # ログイン済みユーザーならroot_path遷移
+    # 但しアプリから入ってきた場合はリダイレクト先が違う
     if @user.persisted?
       sign_in @user
-      redirect_to root_path
+
+      # Auth::SessionsController#after_sign_in_path_for と同等の処理
+      last_url = stored_location_for(:user)
+      if [about_path].include?(last_url)
+        next_path = root_path
+      else
+        next_path = last_url || root_path
+      end
+
+      redirect_to next_path
       return
     end
 
