@@ -18,7 +18,16 @@ class Oauth::RegistrationsController < DeviseController
 
     if @user.save
       sign_in @user
-      redirect_to root_path
+
+      # Auth::SessionsController#after_sign_in_path_for と同等の処理
+      last_url = stored_location_for(:user)
+      if [about_path].include?(last_url)
+        next_path = root_path
+      else
+        next_path = last_url || root_path
+      end
+
+      redirect_to next_path
     else
       render :new
     end
